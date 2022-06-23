@@ -18,6 +18,7 @@ class PostSpider(scrapy.Spider):
     inc = 0
 
     def parse(self, response):
+        url_s = []
         for link in response.css('div.featured_post .box'):
             link = link.css('li a').getall()[-3].split('"')[1]
             url_s.append(link)
@@ -28,10 +29,10 @@ class PostSpider(scrapy.Spider):
         print("#"*100)
         print(next_ref)
 
-        file_name = "links3.txt"
+        file_name = "links4.csv"
         with open(file_name, 'a') as file:
             for i in url_s:
-                file.write(f"\"{i}\",")
+                file.write(f"\"{i}\",\n")
 
         # print(next_page)
         if next_ref is not None:
