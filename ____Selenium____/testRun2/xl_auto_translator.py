@@ -10,7 +10,7 @@ import pandas as pd
 xls = pd.ExcelFile(r"Sheet-3.xlsx")
 sheetX = xls.parse(0)
 var1 = sheetX['Column1'].astype('string')
-
+# print(len(var1))
 website_1 = "https://www.google.com/search?ie=UTF-8&q=google%20translator"
 
 s = Service("C:\webdrivers\chromedriver.exe")
@@ -32,7 +32,8 @@ input_text = driver.find_element(
 out_csv = []
 
 # for i in range(len(var1)):
-for i in range(100, 200):
+for i in range(len(var1)):
+    out_csv = []
     print(i)
     try:
         input_text.clear()
@@ -48,14 +49,14 @@ for i in range(100, 200):
         # print("*"*50, output_text_value)
         out_csv.append(output_text_value)
 
+        for i in out_csv:
+            with open("output_xl4.csv", "ab") as file:
+                foo = f"\"{i}\",\n"
+                file.write(foo.encode('utf-8'))
+
         time.sleep(.5)
     except:
         continue
 
-for i in out_csv:
-    with open("output_xl2.csv", "ab") as file:
-        foo = f"\"{i}\",\n"
-        file.write(foo.encode('utf-8'))
 
-
-time.sleep(300)
+# time.sleep(300)
