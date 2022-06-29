@@ -42,9 +42,10 @@ for i in range(len(var1)):
         # output_text = driver.find_element(
         #     By.XPATH, '//div[@id="tw-target-text-container"]//span')
         # print("*"*50, output_text.text)
-        time.sleep(.65)
+        time.sleep(.7)
         output_text = driver.find_element(
-            By.XPATH, '//div[@id="tw-target-text-container"]//span')
+            By.XPATH, '//div[@id="gt-src-is"]//div[@class="gt-is-lb"]/div')
+        # By.XPATH, '//div[@id="tw-target-text-container"]//span')
         output_text_value = output_text.text
         # print("*"*50, output_text_value)
         out_csv.append(output_text_value)
